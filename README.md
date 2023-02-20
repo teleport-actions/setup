@@ -27,11 +27,17 @@ Pre-requisites:
 Example usage:
 
 ```yaml
-steps:
-  - name: Install Teleport
-    uses: teleport-actions/setup@v1
-    with:
-      # version must be specified, and exclude the "v" prefix.
-      # check https://goteleport.com/download/ for valid releases.
-      version: 11.0.3
+on:
+  workflow_dispatch: {}
+jobs:
+  demo-setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Teleport
+        uses: teleport-actions/setup@v1
+        with:
+          # version must be specified, and exclude the "v" prefix.
+          # check https://goteleport.com/download/ for valid releases.
+          version: 11.0.3
+      - run: tsh # tsh, tbot and tctl will now be available
 ```

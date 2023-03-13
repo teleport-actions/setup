@@ -38,6 +38,6 @@ jobs:
         with:
           # version must be specified, and exclude the "v" prefix.
           # check https://goteleport.com/download/ for valid releases.
-          version: 11.0.3
+          version: 12.1.0
       - run: tsh # tsh, tbot and tctl will now be available
 ```

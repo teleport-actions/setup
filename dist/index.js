@@ -6811,7 +6811,7 @@ async function run() {
     }
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.info('Could not find Teleport binaries in cache. Fetching...');
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.debug('Downloading tar');
-    const downloadPath = await _actions_tool_cache__WEBPACK_IMPORTED_MODULE_2__.downloadTool(`https://get.gravitational.com/teleport-${version}-bin.tar.gz`);
+    const downloadPath = await _actions_tool_cache__WEBPACK_IMPORTED_MODULE_2__.downloadTool(`https://cdn.teleport.dev/teleport-${version}-bin.tar.gz`);
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.debug('Extracting tar');
     const extractedPath = await _actions_tool_cache__WEBPACK_IMPORTED_MODULE_2__.extractTar(downloadPath, undefined, [
         'xz',

@@ -6794,15 +6794,17 @@ function getInputs() {
     if (!versionRegex.test(version)) {
         throw new Error("incorrect 'version' specified, it should include all parts of the version e.g 11.0.1");
     }
+    const enterprise = _actions_core__WEBPACK_IMPORTED_MODULE_1__.getBooleanInput('enterprise');
     return {
         version,
+        enterprise,
     };
 }
-const toolName = 'teleport';
 async function run() {
     const inputs = getInputs();
     const version = versionString(os__WEBPACK_IMPORTED_MODULE_0___default().platform(), os__WEBPACK_IMPORTED_MODULE_0___default().arch(), inputs.version);
-    _actions_core__WEBPACK_IMPORTED_MODULE_1__.info(`Installing Teleport ${version}`);
+    const toolName = inputs.enterprise ? 'teleport-ent' : 'teleport';
+    _actions_core__WEBPACK_IMPORTED_MODULE_1__.info(`Installing ${toolName} ${version}`);
     const toolPath = _actions_tool_cache__WEBPACK_IMPORTED_MODULE_2__.find(toolName, version);
     if (toolPath !== '') {
         _actions_core__WEBPACK_IMPORTED_MODULE_1__.info('Teleport binaries found in cache.');
@@ -6811,7 +6813,7 @@ async function run() {
     }
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.info('Could not find Teleport binaries in cache. Fetching...');
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.debug('Downloading tar');
-    const downloadPath = await _actions_tool_cache__WEBPACK_IMPORTED_MODULE_2__.downloadTool(`https://cdn.teleport.dev/teleport-${version}-bin.tar.gz`);
+    const downloadPath = await _actions_tool_cache__WEBPACK_IMPORTED_MODULE_2__.downloadTool(`https://cdn.teleport.dev/${toolName}-${version}-bin.tar.gz`);
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.debug('Extracting tar');
     const extractedPath = await _actions_tool_cache__WEBPACK_IMPORTED_MODULE_2__.extractTar(downloadPath, undefined, [
         'xz',

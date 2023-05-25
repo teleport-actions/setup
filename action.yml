@@ -1,7 +1,11 @@
 name: Teleport Setup
 author: Gravitational, Inc.
-description: Installs `tsh`, `tbot` and `tctl`.
+description: Installs `teleport`, `tsh`, `tbot` and `tctl`.
 inputs:
+    enterprise:
+        description: Specify whether to use the enterprise binaries.
+        required: false
+        default: "false"
     version:
         description: Specify the Teleport version without the preceding "v"
         required: true

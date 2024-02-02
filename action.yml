@@ -10,7 +10,7 @@ inputs:
         description: Specify the Teleport version without the preceding "v"
         required: true
 runs:
-    using: node16
+    using: node20
     main: dist/index.js
 branding:
     color: purple
